@@ -1,0 +1,4 @@
+
+def main():
+    # Code to be executed
+    print("Hello from main!")
