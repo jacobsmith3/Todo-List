@@ -1,4 +1,11 @@
+import mysql.connector
 
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="Wyatt323232!",
+  database="todo"
+)
 def main():
     # Code to be executed
     print("Hello from main!")
