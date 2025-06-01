@@ -4,16 +4,21 @@ mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="Wyatt323232!",
-  database="todo"
+  database="TODO"
 )
 
 def main():
     # Code to be executed
     choice = 0
     while choice != 5:
-        print("What would you like to do:")
         print("1. Look at todays schedule")
         print("2. Look at a specific dates schedule")
         print("3. Look at weeks schedule")
         print("4. Add a todo")
+        print("")
+        print("")
+        print("What would you like to do:")
         choice = input()
+
+if __name__ == "__main__":
+        main()
