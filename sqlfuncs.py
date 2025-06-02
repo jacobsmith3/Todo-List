@@ -4,20 +4,21 @@ from datetime import date
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="Wyatt323232!",
-  database="TODO"
+  password="Wyatt323232!"
 )
 
 # this is a check to make sure that the database exists and if not it gets created with the tables
 def checkdatabase():
     mycursor = mydb.cursor()
 
-    mycursor.execute("SHOW DATABASES")
+    mycursor.execute("SHOW DATABASES LIKE 'todo';")
+    databases = mycursor.fetchall()
 
     #checks if database is there 
-    if("Todo" not in mycursor):
-        mycursor.execute("CREATE DATABASE Todo")
-        mycursor.execute("CREATE TABLE Reminders (dt DATE,tm TIME,What VARCHAR(255), repeat BIT)")
+    if not databases:
+        mycursor.execute("CREATE DATABASE todo")
+        mydb.database = "todo"  # select the new DB before creating table
+        mycursor.execute("CREATE TABLE Reminders (dt DATE, tm TIME, What VARCHAR(255), `repeat` BIT)")
 
 # gets the days todos 
 def gettoday():
