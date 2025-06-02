@@ -1,24 +1,24 @@
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="Wyatt323232!",
-  database="TODO"
-)
+import sqlfuncs
 
 def main():
     # Code to be executed
+    sqlfuncs.checkdatabase()
     choice = 0
     while choice != 5:
         print("1. Look at todays schedule")
         print("2. Look at a specific dates schedule")
         print("3. Look at weeks schedule")
         print("4. Add a todo")
-        print("")
+        print("5. Exit")
         print("")
         print("What would you like to do:")
         choice = input()
+        if choice ==1:
+             break      
+        elif choice ==5:
+            print("Goodbye")
+            break 
+
 
 if __name__ == "__main__":
         main()
