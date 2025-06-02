@@ -1,4 +1,5 @@
 import mysql.connector
+from datetime import date
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -15,7 +16,17 @@ def checkdatabase():
 
     #checks if database is there 
     if("Todo" not in mycursor):
-        mycursor.execute("CREATE DATABASE mydatabase")
-        mycursor.execute("CREATE TABLE Reminders (When DATETIME,What VARCHAR(255), repeat BIT)")
+        mycursor.execute("CREATE DATABASE Todo")
+        mycursor.execute("CREATE TABLE Reminders (dt DATE,tm TIME,What VARCHAR(255), repeat BIT)")
 
-
+# gets the days todos 
+def gettoday():
+    # get todays date and then format it correctly
+    today = date.today()
+    formatted_date = today.strftime("%Y-%m-%d")
+    
+    # make the call to the sql server and database
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM Reminders WHERE dt = "+ formatted_date)
+    for x in mycursor:
+        print(x)

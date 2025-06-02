@@ -15,6 +15,12 @@ def main():
         choice = input()
         if choice ==1:
              break      
+        elif choice ==2:
+             break
+        elif choice ==3:
+             break      
+        elif choice ==4:
+             break       
         elif choice ==5:
             print("Goodbye")
             break 
