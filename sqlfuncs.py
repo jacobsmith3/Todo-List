@@ -31,3 +31,14 @@ def gettoday():
     mycursor.execute("SELECT * FROM Reminders WHERE dt = "+ formatted_date)
     for x in mycursor:
         print(x)
+
+# adds thinsg to the Table so i can then i can test the gettoday function
+# and so the user can add todos they want to use
+def maketodo(val):
+    mycursor = mydb.cursor()
+    mydb.database = "todo"
+    action = "INSERT INTO TODO VALUES(%s,%s, %s, %s)"
+    mycursor.execute(action, val)
+    mycursor.commit()
+    print("Added new todo")
+
