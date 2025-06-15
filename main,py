@@ -13,7 +13,7 @@ def main():
         print("5. Exit")
         print("")
         print("What would you like to do:")
-        choice = input()
+        choice = int(input())
         if choice ==1:
              sqlfuncs.gettoday()
              os.system("pause")      
@@ -22,11 +22,25 @@ def main():
         elif choice ==3:
              break      
         elif choice ==4:
-             break       
+             print("When(YYYY-MM-DD): ")
+             dt = input()
+             print("What time: ")
+             tt = input()
+             print("What: ")
+             wt = input()
+             print("Would you like to repeat this todo?(y/n)")
+             if(input() =="y"):
+                  print("At what interval would you like it to repeat?(D/M/Y)")
+                  rt= input()
+             else:
+                  rt = "N"
+             val=[dt,tt,wt,rt]
+             sqlfuncs.maketodo(val)       
         elif choice ==5:
             print("Goodbye")
-            break 
+            break
 
 
 if __name__ == "__main__":
         main()
+        sqlfuncs.cleartable() 

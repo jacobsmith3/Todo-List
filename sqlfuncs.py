@@ -18,7 +18,7 @@ def checkdatabase():
     if not databases:
         mycursor.execute("CREATE DATABASE todo")
         mydb.database = "todo"  # select the new DB before creating table
-        mycursor.execute("CREATE TABLE Reminders (dt DATE, tm TIME, What VARCHAR(255), `repeat` BIT)")
+        mycursor.execute("CREATE TABLE Reminders (dt DATE, tm TIME, What VARCHAR(255), `repeat` CHAR(1))")
 
 # gets the days todos 
 def gettoday():
@@ -37,8 +37,13 @@ def gettoday():
 def maketodo(val):
     mycursor = mydb.cursor()
     mydb.database = "todo"
-    action = "INSERT INTO TODO VALUES(%s,%s, %s, %s)"
+    action = "INSERT INTO reminders VALUES(%s,%s, %s, %s)"
     mycursor.execute(action, val)
-    mycursor.commit()
-    print("Added new todo")
+    mydb.commit()
+    print("Added new todo!")
 
+## clears a tabele so i can test features through the debug tool
+def cleartable():
+    mycursor = mydb.cursor()
+    mydb.database = "todo"
+    mycursor.execute("DELETE FROM reminders")
