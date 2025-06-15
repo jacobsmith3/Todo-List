@@ -28,7 +28,8 @@ def gettoday():
     
     # make the call to the sql server and database
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT * FROM Reminders WHERE dt = "+ formatted_date)
+    mydb.database = "todo"
+    mycursor.execute("SELECT * FROM Reminders WHERE dt = %s",(formatted_date,))
     for x in mycursor:
         print(x)
 
