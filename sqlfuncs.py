@@ -57,3 +57,13 @@ def extractinfo(data):
     test=date.split(':')
     test[0]=str(int(test[0]))
     print(str(data[0])+" --- "+test[0]+":"+test[1]+" --- "+data[2])
+
+##looks up a specified date that is given by the user and finds all todos that relate to that day
+def datelookup(dt):
+    # make the call to the sql server and database
+    ##day = datetime.
+    mycursor = mydb.cursor()
+    mydb.database = "todo"
+    mycursor.execute("SELECT * FROM Reminders WHERE dt = %s",(dt,))
+    for x in mycursor:
+        extractinfo(x)
