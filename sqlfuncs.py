@@ -25,6 +25,7 @@ def gettoday():
     # get todays date and then format it correctly
     today = date.today()
     formatted_date = today.strftime("%Y-%m-%d")
+    print(today.strftime('%A'))
     
     # make the call to the sql server and database
     mycursor = mydb.cursor()
@@ -54,5 +55,5 @@ def cleartable():
 def extractinfo(data):
     date=str(data[1])
     test=date.split(':')
-    test[0]=str(int(test[0])%12)
+    test[0]=str(int(test[0]))
     print(str(data[0])+" --- "+test[0]+":"+test[1]+" --- "+data[2])
