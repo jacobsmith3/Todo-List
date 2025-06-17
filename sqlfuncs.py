@@ -31,7 +31,7 @@ def gettoday():
     mydb.database = "todo"
     mycursor.execute("SELECT * FROM Reminders WHERE dt = %s",(formatted_date,))
     for x in mycursor:
-        print(x)
+        extractinfo(x)
 
 # adds thinsg to the Table so i can then i can test the gettoday function
 # and so the user can add todos they want to use
@@ -47,4 +47,12 @@ def maketodo(val):
 def cleartable():
     mycursor = mydb.cursor()
     mydb.database = "todo"
-    mycursor.execute("DELETE FROM reminders")
+    mycursor.execute("TRUNCATE TABLE reminders")
+
+## extracts info from data quires and gives them to the console in a easier to 
+##understand way
+def extractinfo(data):
+    date=str(data[1])
+    test=date.split(':')
+    test[0]=str(int(test[0])%12)
+    print(str(data[0])+" --- "+test[0]+":"+test[1]+" --- "+data[2])

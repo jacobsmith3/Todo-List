@@ -14,5 +14,6 @@
             "username": "root",
             "password": "Wyatt323232!"
         }
-    ]
+    ],
+    "python.analysis.autoImportCompletions": true
 }
